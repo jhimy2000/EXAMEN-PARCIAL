@@ -1,0 +1,17 @@
+{
+  "artists": [
+    {
+      "id": 1,
+
+      "name": "Jhimy Diestras",
+
+      "photo": "Uel imagen",
+
+      "favorite_sports": "FUtbol",
+
+      "points": "lPSZREgjBaNod26VW8R6qPNBx",
+
+      "address": "SMP"
+    }
+  ]
+}

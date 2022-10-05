@@ -1,0 +1,142 @@
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    ></button>
+
+    <span>Artistas</span>
+
+    <span class="example-spacer"></span>
+
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    ></button>
+    <button mat-button>Home</button>
+  </mat-toolbar>
+</p>
+
+<br />
+<!-- fikfemefFORM -->
+<form (submit)="onSubmit()" #studentForm="ngForm">
+  <mat-form-field
+    ><input
+      matInput
+      placeholder="Nombre"
+      name="Name"
+      required
+      [(ngModel)]="artistsData.name"
+  /></mat-form-field>
+
+  <mat-form-field
+    ><input
+      type="text"
+      matInput
+      placeholder="photo"
+      name="photo"
+      required
+      [(ngModel)]="artistsData.photo"
+  /></mat-form-field>
+
+  <mat-form-field
+    ><input
+      type="text"
+      matInput
+      placeholder="favorite_sports"
+      name="favorite_sports"
+      required
+      [(ngModel)]="artistsData.favorite_sports"
+  /></mat-form-field>
+
+  <mat-form-field
+    ><input
+      type="text"
+      matInput
+      placeholder="Email"
+      name="Email"
+      required
+      [(ngModel)]="artistsData.points"
+  /></mat-form-field>
+
+  <ng-container *ngIf="isEditMode; else elseTemplate">
+    <button mat-button color="primary">Update</button>&nbsp;
+
+    <button mat-button color="warn" (click)="cancelEdit()">
+      Cancel
+    </button> </ng-container
+  >&nbsp;
+
+  <ng-template #elseTemplate>
+    <button mat-button color="primary">Add</button>
+  </ng-template>
+</form>
+<!-- fikfemef -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id.</th>
+
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="photo">
+    <th mat-header-cell *matHeaderCellDef>photo</th>
+
+    <td mat-cell *matCellDef="let element">{{ element.photo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="favorite_sports">
+    <th mat-header-cell *matHeaderCellDef>favorite_sports</th>
+
+    <td mat-cell *matCellDef="let element">{{ element.favorite_sports }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef>points</th>
+
+    <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+    <td mat-cell *matCellDef="let element">
+      <a mat-raised-button color="accent" (click)="editItem(element)"
+        ><mat-icon>edit</mat-icon></a
+      >
+
+      <a mat-raised-button color="warn" (click)="deleteItem(element.id)"
+        ><mat-icon>delete</mat-icon></a
+      >
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<!-- llllllllllllllllllllllllllll -->
+<mat-paginator
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons
+></mat-paginator>
+<!-- llllllllllllllllllllllllllll -->
+<a href="/home">Home</a>
